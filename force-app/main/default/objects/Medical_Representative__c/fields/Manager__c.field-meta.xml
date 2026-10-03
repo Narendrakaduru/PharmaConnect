@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Manager__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Manager</label>
+    <referenceTo>Medical_Representative__c</referenceTo>
+    <relationshipLabel>Medical Representatives</relationshipLabel>
+    <relationshipName>Medical_Representatives</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>
