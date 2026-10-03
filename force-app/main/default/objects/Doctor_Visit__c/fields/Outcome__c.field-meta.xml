@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Outcome__c</fullName>
+    <label>Outcome</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Highly Positive</fullName>
+                <default>false</default>
+                <label>Highly Positive</label>
+            </value>
+            <value>
+                <fullName>Neutral</fullName>
+                <default>false</default>
+                <label>Neutral</label>
+            </value>
+            <value>
+                <fullName>Hesitant</fullName>
+                <default>false</default>
+                <label>Hesitant</label>
+            </value>
+            <value>
+                <fullName>Objections Raised</fullName>
+                <default>false</default>
+                <label>Objections Raised</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
