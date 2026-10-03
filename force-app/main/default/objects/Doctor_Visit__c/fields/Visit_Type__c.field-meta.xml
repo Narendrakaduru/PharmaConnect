@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Visit_Type__c</fullName>
+    <label>Visit Type</label>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Routine Detailing</fullName>
+                <default>false</default>
+                <label>Routine Detailing</label>
+            </value>
+            <value>
+                <fullName>Product Launch</fullName>
+                <default>false</default>
+                <label>Product Launch</label>
+            </value>
+            <value>
+                <fullName>Follow-up</fullName>
+                <default>false</default>
+                <label>Follow-up</label>
+            </value>
+            <value>
+                <fullName>Sample Drop</fullName>
+                <default>false</default>
+                <label>Sample Drop</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
