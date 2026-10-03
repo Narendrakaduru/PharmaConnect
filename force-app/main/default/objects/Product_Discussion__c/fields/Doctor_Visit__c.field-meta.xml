@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Doctor_Visit__c</fullName>
+    <label>Doctor Visit</label>
+    <referenceTo>Doctor_Visit__c</referenceTo>
+    <relationshipLabel>Product Discussions</relationshipLabel>
+    <relationshipName>Product_Discussions</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>
