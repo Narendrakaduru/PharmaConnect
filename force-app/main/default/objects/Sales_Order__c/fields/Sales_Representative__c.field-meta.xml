@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sales_Representative__c</fullName>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <description>Rep booking the order</description>
+    <label>Sales Representative</label>
+    <referenceTo>Medical_Representative__c</referenceTo>
+    <relationshipLabel>Sales Orders</relationshipLabel>
+    <relationshipName>Sales_Orders</relationshipName>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>
