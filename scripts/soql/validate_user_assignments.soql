@@ -1,0 +1,60 @@
+-- PharmaConnect — User Access Validation Queries
+-- Run with: sf data query --target-org sf-ep-dev --file scripts/soql/validate_user_assignments.soql
+-- Or paste each query individually into Salesforce Developer Console > Query Editor
+
+-- ══════════════════════════════════════════════════════════════
+-- QUERY 1: Verify User Role Assignments
+-- Expected: User 1 → Area Sales Manager - Hyderabad
+--           User 2 → Medical Representative - Hyderabad
+-- ══════════════════════════════════════════════════════════════
+SELECT
+    Id,
+    Username,
+    Profile.Name,
+    UserRole.Name,
+    Manager.Name,
+    IsActive
+FROM User
+WHERE IsActive = TRUE
+  AND Profile.Name IN ('System Administrator', 'Standard User', 'Custom: Medical Representative')
+ORDER BY Profile.Name ASC
+
+
+-- ══════════════════════════════════════════════════════════════
+-- QUERY 2: Verify Permission Set Assignments
+-- Expected:
+--   User 1 → Pharma_Product_Catalog_Admin, Pharma_Sample_Approver,
+--             Pharma_Executive_Analytics
+--   User 2 → Pharma_Representative_Access
+-- ══════════════════════════════════════════════════════════════
+SELECT
+    Assignee.Username,
+    Assignee.Profile.Name,
+    PermissionSet.Name,
+    PermissionSet.Label
+FROM PermissionSetAssignment
+WHERE PermissionSet.Name IN (
+    'Pharma_Representative_Access',
+    'Pharma_Product_Catalog_Admin',
+    'Pharma_Sample_Approver',
+    'Pharma_Executive_Analytics'
+)
+ORDER BY Assignee.Username, PermissionSet.Name ASC
+
+
+-- ══════════════════════════════════════════════════════════════
+-- QUERY 3: Verify Role Hierarchy is intact
+-- Expected: RSM → ASM → MR (3 roles, correct parentage)
+-- ══════════════════════════════════════════════════════════════
+SELECT
+    Id,
+    Name,
+    ParentRole.Name,
+    DeveloperName
+FROM UserRole
+WHERE DeveloperName IN (
+    'Regional_Sales_Manager_South',
+    'Area_Sales_Manager_Hyderabad',
+    'Medical_Representative_Hyderabad'
+)
+ORDER BY Name ASC

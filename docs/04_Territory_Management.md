@@ -34,33 +34,60 @@ graph TD
 
 ---
 
-## 3. Step-by-Step Setup in Free Dev Org
+---
 
-### Step 1: Create Territory Fields
-Create a custom text or picklist field `Territory__c` on:
-* `Healthcare_Provider__c`
-* `Medical_Representative__c`
-* `Doctor_Visit__c`
-* `Sales_Target__c`
+## 3. Implementation: Metadata vs. Admin UI
 
-### Step 2: Configure Public Groups
-Go to **Setup → Public Groups** and create groups for each territory node:
-* `Group_Territory_Hyderabad_Central`
-* `Group_Territory_Warangal`
-* `Group_Territory_Vijayawada`
+PharmaConnect provides full support for **both** automated metadata deployment and point-and-click Salesforce Setup administration:
 
-Assign Medical Representatives (e.g., User 2) to their respective territory public group.
+| Component | Metadata API Artifact | Admin Setup Alternative (UI) | Current Status |
+| :--- | :--- | :--- | :--- |
+| **Public Groups** | `force-app/main/default/groups/Group_Territory_*.group-meta.xml` | **Setup → Users → Public Groups → New** | ✅ Deployed & Active |
+| **Group Memberships** | Data record (`GroupMember` via Apex) | **Setup → Users → Public Groups → Edit → Add User** | ✅ Assigned (User 2) |
+| **Sharing Rules** | `force-app/main/default/sharingRules/Healthcare_Provider__c.sharingRules-meta.xml` | **Setup → Security → Sharing Settings → Healthcare Provider Sharing Rules** | ✅ Deployed & Active |
+| **Role Hierarchy** | `force-app/main/default/roles/*.role-meta.xml` | **Setup → Users → Roles** | ✅ Deployed & Active |
+| **Med Rep Profile** | `Medical_Representative__c` record | **App Launcher → Medical Representatives → New/Edit** | ✅ Configured (User 2) |
 
-### Step 3: Configure Criteria-Based Sharing Rules
-Go to **Setup → Sharing Settings → Healthcare_Provider__c Sharing Rules**:
-* **Rule Name:** `Share_Hyderabad_Central_HCPs`
-* **Rule Type:** Based on criteria
-* **Field Criteria:** `Territory__c` EQUALS `Hyderabad Central`
-* **Share with:** Public Group `Group_Territory_Hyderabad_Central`
-* **Access Level:** Read/Write
+---
 
-### Step 4: Manager Visibility Verification
-Because the **Area Sales Manager** role sits directly above the **Medical Representative** role in the standard Role Hierarchy, managers (User 1) automatically inherit full read/write/edit access over all records created in child territories.
+## 4. Territory Configuration Details
+
+### Step 1: Territory Public Groups
+The following territory public groups are configured in the org:
+* `Group_Territory_Hyderabad_Central` (`Territory: Hyderabad Central`)
+* `Group_Territory_Warangal` (`Territory: Warangal`)
+* `Group_Territory_Vijayawada` (`Territory: Vijayawada`)
+
+**Membership:** User 2 (`harishlankepalli555@gmail.com.devbox1`) is explicitly assigned to `Group_Territory_Hyderabad_Central`.
+
+### Step 2: Criteria-Based Sharing Rules
+Deployed on `Healthcare_Provider__c` (Organization-Wide Default: **Private**):
+
+| Rule API Name | Label | Criteria | Shared To | Access Level |
+| :--- | :--- | :--- | :--- | :--- |
+| `Share_Hyderabad_Central_HCPs` | Share Hyderabad Central HCPs | `Territory__c = 'Hyderabad Central'` | `Group_Territory_Hyderabad_Central` | **Read/Write** (`Edit`) |
+| `Share_Warangal_HCPs` | Share Warangal HCPs | `Territory__c = 'Warangal'` | `Group_Territory_Warangal` | **Read/Write** (`Edit`) |
+| `Share_Vijayawada_HCPs` | Share Vijayawada HCPs | `Territory__c = 'Vijayawada'` | `Group_Territory_Vijayawada` | **Read/Write** (`Edit`) |
+
+### Step 3: Role Hierarchy Visibility
+* User 1 is assigned the **Area Sales Manager - Hyderabad** role.
+* User 2 is assigned the **Medical Representative - Hyderabad** role.
+* Because `Medical_Representative_Hyderabad` reports directly to `Area_Sales_Manager_Hyderabad`, User 1 automatically inherits full Read, Edit, and Delete access over all records owned by User 2 through standard Salesforce Role Hierarchy access grant.
+
+---
+
+## 5. Verification & Testing
+
+To run the automated territory configuration and access validation, execute:
+
+```powershell
+sf apex run --target-org sf-ep-dev --file scripts/apex/validate_territory_sharing.apex
+```
+
+### Validation Checks Performed:
+1. **MR Territory Access:** Verifies that records matching `Territory__c = 'Hyderabad Central'` are granted Read & Edit access to User 2 via the sharing rule.
+2. **Least Privilege Isolation:** Verifies that records matching `Territory__c = 'Warangal'` are inaccessible (`HasReadAccess = false`) to User 2.
+3. **Manager Role Hierarchy Visibility:** Verifies that records owned by User 2 are fully visible and editable by User 1 (Area Sales Manager).
 
 ---
 
