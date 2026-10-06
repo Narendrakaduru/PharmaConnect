@@ -16,6 +16,21 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>Share_Hyderabad_Central_HCPs_Role</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Shares Healthcare Providers in Hyderabad Central territory with the Medical Representative - Hyderabad role and subordinates. Read/Write access via role hierarchy.</description>
+        <label>Share Hyderabad Central HCPs</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Medical_Representative_Hyderabad</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>Territory__c</field>
+            <operation>equals</operation>
+            <value>Hyderabad Central</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>Share_Vijayawada_HCPs</fullName>
         <accessLevel>Edit</accessLevel>
         <description>Shares Healthcare Providers in Vijayawada territory with the Vijayawada Public Group (Read/Write access).</description>
@@ -31,12 +46,42 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
+        <fullName>Share_Vijayawada_HCPs_Role</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Shares Healthcare Providers in Vijayawada territory with the Medical Representative - Hyderabad role. Read/Write access via role hierarchy.</description>
+        <label>Share Vijayawada HCPs</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Medical_Representative_Hyderabad</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>Territory__c</field>
+            <operation>equals</operation>
+            <value>Vijayawada</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
         <fullName>Share_Warangal_HCPs</fullName>
         <accessLevel>Edit</accessLevel>
         <description>Shares Healthcare Providers in Warangal territory with the Warangal Public Group (Read/Write access).</description>
         <label>Share Warangal HCPs</label>
         <sharedTo>
             <group>Group_Territory_Warangal</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Territory__c</field>
+            <operation>equals</operation>
+            <value>Warangal</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Warangal_HCPs_Role</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Shares Healthcare Providers in Warangal territory with the Medical Representative - Hyderabad role. Read/Write access via role hierarchy.</description>
+        <label>Share Warangal HCPs</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Medical_Representative_Hyderabad</roleAndSubordinatesInternal>
         </sharedTo>
         <criteriaItems>
             <field>Territory__c</field>
