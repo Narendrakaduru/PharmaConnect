@@ -1,6 +1,145 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>Read-only access for PharmaConnect executive reporting and analytics. Covers all objects and fields for operational reports, territory metrics, and the executive dashboard. No Create, Edit, Delete, Modify All, or View All.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Pharma Executive Analytics</label>
+    <license>Salesforce</license>
+
+    <!-- ═══════════════════════════════════════════
+         OBJECT PERMISSIONS — all read-only
+         ═══════════════════════════════════════════ -->
+
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Account</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Product2</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Healthcare_Provider__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Medical_Representative__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Doctor_Visit__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Product_Discussion__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Sample_Request__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Sales_Order__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Sales_Order_Line__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Sales_Target__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Follow_Up__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+
+    <!-- ═══════════════════════════════════════════
+         FIELD PERMISSIONS — all read-only
+         NOTE: Required fields (required=true in field XML) are excluded.
+         Salesforce auto-grants required fields to all users with object access.
+         Excluded required fields:
+           Healthcare_Provider__c: Provider_Name__c, Provider_Type__c
+           Medical_Representative__c: Employee_ID__c, Region__c
+           Doctor_Visit__c: Healthcare_Provider__c, Medical_Representative__c,
+                            Visit_Date__c, Visit_Type__c
+           Product_Discussion__c: Interest_Level__c
+           Sample_Request__c: Healthcare_Provider__c, Medical_Representative__c,
+                              Quantity__c
+           Sales_Order__c: Account__c, Sales_Representative__c
+           Sales_Order_Line__c: Quantity__c, Unit_Price__c
+           Sales_Target__c: Medical_Representative__c, Territory__c,
+                            Target_Month__c, Target_Amount__c
+           Follow_Up__c: Healthcare_Provider__c, Due_Date__c
+           Product2: Formulation__c, Strength__c, Therapeutic_Class__c, Pack_Size__c
+         ═══════════════════════════════════════════ -->
+
+    <!-- Account — custom fields -->
     <fieldPermissions>
         <editable>false</editable>
         <field>Account.Active__c</field>
@@ -31,56 +170,35 @@
         <field>Account.Tier__c</field>
         <readable>true</readable>
     </fieldPermissions>
+
+    <!-- Product2 — non-required custom fields -->
     <fieldPermissions>
         <editable>false</editable>
-        <field>Doctor_Visit__c.Next_Follow_up_Date__c</field>
+        <field>Product2.Available_Stock__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Doctor_Visit__c.Notes__c</field>
+        <field>Product2.Contraindications__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Doctor_Visit__c.Outcome__c</field>
+        <field>Product2.Dosage_Information__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Doctor_Visit__c.Purpose__c</field>
+        <field>Product2.Indications__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Doctor_Visit__c.Status__c</field>
+        <field>Product2.Key_Benefits__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Follow_Up__c.Assigned_To__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Follow_Up__c.Notes__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Follow_Up__c.Priority__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Follow_Up__c.Related_Visit__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Follow_Up__c.Status__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
+
+    <!-- Healthcare_Provider__c — non-required fields -->
     <fieldPermissions>
         <editable>false</editable>
         <field>Healthcare_Provider__c.Account__c</field>
@@ -121,6 +239,8 @@
         <field>Healthcare_Provider__c.Territory__c</field>
         <readable>true</readable>
     </fieldPermissions>
+
+    <!-- Medical_Representative__c — non-required fields -->
     <fieldPermissions>
         <editable>false</editable>
         <field>Medical_Representative__c.Joining_Date__c</field>
@@ -146,31 +266,35 @@
         <field>Medical_Representative__c.User__c</field>
         <readable>true</readable>
     </fieldPermissions>
+
+    <!-- Doctor_Visit__c — non-required fields -->
     <fieldPermissions>
         <editable>false</editable>
-        <field>Product2.Available_Stock__c</field>
+        <field>Doctor_Visit__c.Next_Follow_up_Date__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Product2.Contraindications__c</field>
+        <field>Doctor_Visit__c.Notes__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Product2.Dosage_Information__c</field>
+        <field>Doctor_Visit__c.Outcome__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Product2.Indications__c</field>
+        <field>Doctor_Visit__c.Purpose__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Product2.Key_Benefits__c</field>
+        <field>Doctor_Visit__c.Status__c</field>
         <readable>true</readable>
     </fieldPermissions>
+
+    <!-- Product_Discussion__c — non-required fields -->
     <fieldPermissions>
         <editable>false</editable>
         <field>Product_Discussion__c.Competitor_Mentioned__c</field>
@@ -191,51 +315,8 @@
         <field>Product_Discussion__c.Product__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Sales_Order_Line__c.Discount_Percentage__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Sales_Order_Line__c.Product__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Sales_Order_Line__c.Total_Price__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Sales_Order__c.Distributor__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Sales_Order__c.Order_Date__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Sales_Order__c.Status__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Sales_Order__c.Total_Amount__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Sales_Target__c.Achieved_Amount__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Sales_Target__c.Achievement_Percentage__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
+
+    <!-- Sample_Request__c — non-required fields -->
     <fieldPermissions>
         <editable>false</editable>
         <field>Sample_Request__c.Approval_Date__c</field>
@@ -261,117 +342,85 @@
         <field>Sample_Request__c.Status__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <hasActivationRequired>false</hasActivationRequired>
-    <label>Pharma Executive Analytics</label>
-    <license>Salesforce</license>
-    <objectPermissions>
-        <allowCreate>false</allowCreate>
-        <allowDelete>false</allowDelete>
-        <allowEdit>false</allowEdit>
-        <allowRead>true</allowRead>
-        <modifyAllRecords>false</modifyAllRecords>
-        <object>Account</object>
-        <viewAllFields>false</viewAllFields>
-        <viewAllRecords>false</viewAllRecords>
-    </objectPermissions>
-    <objectPermissions>
-        <allowCreate>false</allowCreate>
-        <allowDelete>false</allowDelete>
-        <allowEdit>false</allowEdit>
-        <allowRead>true</allowRead>
-        <modifyAllRecords>false</modifyAllRecords>
-        <object>Doctor_Visit__c</object>
-        <viewAllFields>false</viewAllFields>
-        <viewAllRecords>false</viewAllRecords>
-    </objectPermissions>
-    <objectPermissions>
-        <allowCreate>false</allowCreate>
-        <allowDelete>false</allowDelete>
-        <allowEdit>false</allowEdit>
-        <allowRead>true</allowRead>
-        <modifyAllRecords>false</modifyAllRecords>
-        <object>Follow_Up__c</object>
-        <viewAllFields>false</viewAllFields>
-        <viewAllRecords>false</viewAllRecords>
-    </objectPermissions>
-    <objectPermissions>
-        <allowCreate>false</allowCreate>
-        <allowDelete>false</allowDelete>
-        <allowEdit>false</allowEdit>
-        <allowRead>true</allowRead>
-        <modifyAllRecords>false</modifyAllRecords>
-        <object>Healthcare_Provider__c</object>
-        <viewAllFields>false</viewAllFields>
-        <viewAllRecords>false</viewAllRecords>
-    </objectPermissions>
-    <objectPermissions>
-        <allowCreate>false</allowCreate>
-        <allowDelete>false</allowDelete>
-        <allowEdit>false</allowEdit>
-        <allowRead>true</allowRead>
-        <modifyAllRecords>false</modifyAllRecords>
-        <object>Medical_Representative__c</object>
-        <viewAllFields>false</viewAllFields>
-        <viewAllRecords>false</viewAllRecords>
-    </objectPermissions>
-    <objectPermissions>
-        <allowCreate>false</allowCreate>
-        <allowDelete>false</allowDelete>
-        <allowEdit>false</allowEdit>
-        <allowRead>true</allowRead>
-        <modifyAllRecords>false</modifyAllRecords>
-        <object>Product2</object>
-        <viewAllFields>false</viewAllFields>
-        <viewAllRecords>false</viewAllRecords>
-    </objectPermissions>
-    <objectPermissions>
-        <allowCreate>false</allowCreate>
-        <allowDelete>false</allowDelete>
-        <allowEdit>false</allowEdit>
-        <allowRead>true</allowRead>
-        <modifyAllRecords>false</modifyAllRecords>
-        <object>Product_Discussion__c</object>
-        <viewAllFields>false</viewAllFields>
-        <viewAllRecords>false</viewAllRecords>
-    </objectPermissions>
-    <objectPermissions>
-        <allowCreate>false</allowCreate>
-        <allowDelete>false</allowDelete>
-        <allowEdit>false</allowEdit>
-        <allowRead>true</allowRead>
-        <modifyAllRecords>false</modifyAllRecords>
-        <object>Sales_Order_Line__c</object>
-        <viewAllFields>false</viewAllFields>
-        <viewAllRecords>false</viewAllRecords>
-    </objectPermissions>
-    <objectPermissions>
-        <allowCreate>false</allowCreate>
-        <allowDelete>false</allowDelete>
-        <allowEdit>false</allowEdit>
-        <allowRead>true</allowRead>
-        <modifyAllRecords>false</modifyAllRecords>
-        <object>Sales_Order__c</object>
-        <viewAllFields>false</viewAllFields>
-        <viewAllRecords>false</viewAllRecords>
-    </objectPermissions>
-    <objectPermissions>
-        <allowCreate>false</allowCreate>
-        <allowDelete>false</allowDelete>
-        <allowEdit>false</allowEdit>
-        <allowRead>true</allowRead>
-        <modifyAllRecords>false</modifyAllRecords>
-        <object>Sales_Target__c</object>
-        <viewAllFields>false</viewAllFields>
-        <viewAllRecords>false</viewAllRecords>
-    </objectPermissions>
-    <objectPermissions>
-        <allowCreate>false</allowCreate>
-        <allowDelete>false</allowDelete>
-        <allowEdit>false</allowEdit>
-        <allowRead>true</allowRead>
-        <modifyAllRecords>false</modifyAllRecords>
-        <object>Sample_Request__c</object>
-        <viewAllFields>false</viewAllFields>
-        <viewAllRecords>false</viewAllRecords>
-    </objectPermissions>
+
+    <!-- Sales_Order__c — non-required fields -->
+    <!-- Total_Amount__c: roll-up summary — key revenue KPI -->
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Sales_Order__c.Distributor__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Sales_Order__c.Order_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Sales_Order__c.Status__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Sales_Order__c.Total_Amount__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+
+    <!-- Sales_Order_Line__c — non-required fields -->
+    <!-- Total_Price__c: formula — key for line-level revenue drill-down -->
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Sales_Order_Line__c.Discount_Percentage__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Sales_Order_Line__c.Product__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Sales_Order_Line__c.Total_Price__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+
+    <!-- Sales_Target__c — non-required fields -->
+    <!-- Achievement_Percentage__c: formula — primary target realization KPI -->
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Sales_Target__c.Achieved_Amount__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Sales_Target__c.Achievement_Percentage__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+
+    <!-- Follow_Up__c — non-required fields -->
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Follow_Up__c.Assigned_To__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Follow_Up__c.Notes__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Follow_Up__c.Priority__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Follow_Up__c.Related_Visit__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Follow_Up__c.Status__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
 </PermissionSet>
