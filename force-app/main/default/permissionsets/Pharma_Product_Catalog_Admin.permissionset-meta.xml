@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description>Product master data maintenance access. Grants Create/Read/Edit/Delete on Product2 and edit access to non-required PharmaConnect Product2 custom fields. No Modify All, View All, or unrelated object permissions.</description>
+    <description>Product master data maintenance access. Grants Create/Read/Edit/Delete on Product2 and edit access to non-required PharmaConnect Product2 custom fields. [Updated for Sandbox Review]</description>
     <fieldPermissions>
         <editable>false</editable>
         <field>Account.Active__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.Description</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
